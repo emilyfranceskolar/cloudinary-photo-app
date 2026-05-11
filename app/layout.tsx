@@ -26,8 +26,8 @@ function SideMenu() {
   return (
     <div className="pb-12 w-1/5">
       <div className="space-y-4 py-4">
-        <div className="px-3 py-2">
-          <h2 className="mb-2 px-8 text-lg font-semibold tracking-tight">
+        <div className="px-3 py-4">
+          <h2 className="mb-2 px-8 text-2xl font-bold tracking-tight">
             Manage
           </h2>
           <div className="flex flex-col gap-2">
@@ -117,7 +117,7 @@ export default function RootLayout({
         </div>
         <div className="flex">
           <SideMenu />
-          <div className="w-5/6 px-2 pt-16">{children}</div>
+          <div className="w-5/6 px-2 p4-8">{children}</div>
         </div>
       </body>
     </html>
