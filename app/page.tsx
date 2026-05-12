@@ -44,7 +44,7 @@ export default function Home() {
       {imageId && (
         <div className="rounded-lg border border-border overflow-hidden shadow-md">
           <CldImage
-            width="500"
+            width="400"
             height="300"
             src={imageId}
             sizes="100vw"
