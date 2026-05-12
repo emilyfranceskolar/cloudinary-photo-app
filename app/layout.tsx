@@ -52,7 +52,7 @@ function SideMenu() {
                 Gallery
               </Button>
             </Link>
-            <Button className="w-full justify-start flex gap-2 hover:bg-gray-600 rounded-lg px-1 py-2">
+            {/* <Button className="w-full justify-start flex gap-2 hover:bg-gray-600 rounded-lg px-1 py-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -68,7 +68,7 @@ function SideMenu() {
                 />
               </svg>
               Albums
-            </Button>
+            </Button> */}
             <Link href="/favorites">
               <Button className="w-full justify-start flex gap-2 hover:bg-gray-600 rounded-lg px-1 py-2">
                 <Heart />

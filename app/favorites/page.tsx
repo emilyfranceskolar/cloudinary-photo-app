@@ -1,16 +1,27 @@
 import { ForceRefresh } from "@/components/force-refresh";
 import cloudinary from "cloudinary";
-import { CloudinaryImage } from "../gallery/cloudinary-image";
 import { SearchResult } from "../gallery/page";
+import FavoritesList from "./favorites-list";
 
-export default async function GalleryPage() {
-  const results = (await cloudinary.v2.search
-    .expression("resource_type:image AND tags=favorite")
-    .sort_by("created_at", "desc")
-    .with_field("tags")
-    .max_results(10)
-    .execute()) as { resources: SearchResult[] };
-  console.log("results", results);
+export default async function FavoritesPage() {
+  let resources: SearchResult[] = [];
+  let cloudinaryError: string | null = null;
+
+  try {
+    const results = (await cloudinary.v2.search
+      .expression("resource_type:image AND tags=favorite")
+      .sort_by("created_at", "desc")
+      .with_field("tags")
+      .max_results(10)
+      .execute()) as { resources: SearchResult[] };
+
+    resources = results.resources;
+  } catch (error) {
+    const message =
+      (error as { error?: { message?: string } })?.error?.message ??
+      "Failed to load favorites from Cloudinary.";
+    cloudinaryError = message;
+  }
 
   return (
     <section>
@@ -19,18 +30,10 @@ export default async function GalleryPage() {
         <div className="flex justify-between items-center p-8">
           <h1 className="text-4xl font-bold">Favorites Images</h1>
         </div>
-        <div className="grid grid-cols-4 gap-4 p-8">
-          {results.resources.map((result) => (
-            <CloudinaryImage
-              path="/favorites"
-              key={result.public_id}
-              imageData={result}
-              width="400"
-              height="300"
-              alt="an image of something"
-            />
-          ))}
-        </div>
+        {cloudinaryError ? (
+          <p className="px-8 text-red-600">{cloudinaryError}</p>
+        ) : null}
+        <FavoritesList initialResources={resources} />
       </div>
     </section>
   );
