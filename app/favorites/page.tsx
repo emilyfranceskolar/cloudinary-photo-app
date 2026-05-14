@@ -26,7 +26,7 @@ export default async function FavoritesPage() {
     <section>
       <div className="flex flex-col gap-2">
         <div className="flex justify-between items-center p-8">
-          <h1 className="text-4xl font-bold">Favorites Images</h1>
+          <h1 className="text-4xl font-bold">Favorites</h1>
         </div>
         {cloudinaryError ? (
           <p className="px-8 text-red-600">{cloudinaryError}</p>

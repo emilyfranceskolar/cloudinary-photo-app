@@ -63,7 +63,9 @@ export function DeleteButton() {
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel className="text-white">Cancel</AlertDialogCancel>
-          <AlertDialogAction variant="destructive">Delete</AlertDialogAction>
+          <AlertDialogAction className="bg-red-400 text-white hover:bg-red-800">
+            Delete
+          </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

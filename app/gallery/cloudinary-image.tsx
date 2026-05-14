@@ -45,22 +45,22 @@ export function CloudinaryImage({
   }
 
   return (
-    <section className="relative">
-      <div className="absolute top-2 left-2">
-        <DeleteButton />
-      </div>
-      <CldImage {...rest} src={imageData.public_id} />
+    <section className="relative aspect-4/3 overflow-hidden rounded-lg bg-zinc-900 h-full">
+      <CldImage {...rest} src={imageData.public_id} className="object-cover" />
       {isFavorited ? (
         <SolidHeart
           onClick={handleFavoriteClick}
-          className="absolute top-2 right-2 hover:text-white text-red-700 cursor-pointer"
+          className="absolute top-2 right-2 hover:text-white text-red-600 cursor-pointer"
         />
       ) : (
         <Heart
           onClick={handleFavoriteClick}
-          className="absolute top-2 right-2 hover:text-red-700 cursor-pointer"
+          className="absolute top-2 right-2 hover:text-red-600 cursor-pointer"
         />
       )}
+      <div className="absolute top-2 left-2 cursor-pointer">
+        <DeleteButton />
+      </div>
     </section>
   );
 }

@@ -9,6 +9,9 @@ export default function FavoritesList({
 }: {
   initialResources: SearchResult[];
 }) {
+  const imageGridClasses =
+    "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-8 auto-rows-fr";
+
   const [resources, setResources] = useState(initialResources);
   if (resources.length === 0) {
     return (
@@ -19,13 +22,13 @@ export default function FavoritesList({
   }
 
   return (
-    <div className="grid grid-cols-4 gap-4 p-8">
+    <div className={imageGridClasses}>
       {resources.map((result) => (
         <CloudinaryImage
           key={result.public_id}
           imageData={result}
-          width="400"
-          height="300"
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
           alt="an image of something"
           onUnHeart={(unheartedResource) => {
             setResources((currentResources) => {

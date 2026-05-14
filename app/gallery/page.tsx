@@ -7,6 +7,9 @@ export type SearchResult = {
 };
 
 export default async function GalleryPage() {
+  const imageGridClasses =
+    "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-8 auto-rows-fr";
+
   let resources: SearchResult[] = [];
   let cloudinaryError: string | null = null;
 
@@ -35,14 +38,13 @@ export default async function GalleryPage() {
         {cloudinaryError ? (
           <p className="px-8 text-red-600">{cloudinaryError}</p>
         ) : null}
-        <div className="grid grid-cols-4 gap-4 p-8 relative">
+        <div className={imageGridClasses}>
           {resources.map((result) => (
             <CloudinaryImage
-              className=""
               key={result.public_id}
               imageData={result}
-              width="400"
-              height="300"
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
               alt="an image of something"
             />
           ))}

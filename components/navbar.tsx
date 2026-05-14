@@ -29,7 +29,7 @@ const Navbar = () => {
 
         <div className="flex items-center justify-center gap-8">
           <CldUploadButton
-            className="rounded-full px-6 py-2 border border-border text-xs text-white hover:bg-white hover:text-black"
+            className="rounded-full px-6 py-2 border border-border text-xs font-bold text-white hover:bg-white hover:text-black"
             onSuccess={(result: CloudinaryUploadWidgetResults) => {
               if (typeof result.info !== "string" && result.info?.public_id) {
                 setImageId(result.info.public_id);
@@ -50,13 +50,13 @@ const Navbar = () => {
             />
           )}
           <Button
-            className="rounded-full px-6 py-2  text-white hover:bg-white hover:text-black"
+            className="rounded-full px-6 py-2  text-xs text-white hover:bg-white hover:text-black"
             variant="outline"
           >
             Sign In
           </Button>
           <Button
-            className="rounded-full text-white hover:bg-white hover:text-black"
+            className="rounded-full text-xs text-white hover:bg-white hover:text-black"
             variant="outline"
           >
             Get Started
