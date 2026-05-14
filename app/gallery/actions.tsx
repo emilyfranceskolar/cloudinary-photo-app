@@ -1,5 +1,6 @@
 "use server";
 import cloudinary from "cloudinary";
+import { revalidatePath } from "next/cache";
 
 export async function SetAsFavoriteAction(
   public_id: string,
@@ -10,4 +11,6 @@ export async function SetAsFavoriteAction(
   } else {
     await cloudinary.v2.uploader.remove_tag("favorite", [public_id]);
   }
+  revalidatePath("/gallery");
+  revalidatePath("/favorites");
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { CloudinaryImage } from "../gallery/cloudinary-image";
 import { SearchResult } from "../gallery/page";
 
@@ -10,10 +10,13 @@ export default function FavoritesList({
   initialResources: SearchResult[];
 }) {
   const [resources, setResources] = useState(initialResources);
-
-  useEffect(() => {
-    setResources(initialResources);
-  }, [initialResources]);
+  if (resources.length === 0) {
+    return (
+      <div className="flex justify-start p-8">
+        <p>No favorites yet</p>
+      </div>
+    );
+  }
 
   return (
     <div className="grid grid-cols-4 gap-4 p-8">
@@ -24,13 +27,13 @@ export default function FavoritesList({
           width="400"
           height="300"
           alt="an image of something"
-          // onUnHeart={(unheartedResource) => {
-          //   setResources((currentResources) => {
-          //     return currentResources.filter((resource) => {
-          //       return resource.public_id !== unheartedResource.public_id;
-          //     });
-          //   });
-          // }}
+          onUnHeart={(unheartedResource) => {
+            setResources((currentResources) => {
+              return currentResources.filter((resource) => {
+                return resource.public_id !== unheartedResource.public_id;
+              });
+            });
+          }}
         />
       ))}
     </div>

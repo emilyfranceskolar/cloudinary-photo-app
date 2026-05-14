@@ -1,23 +1,12 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@base-ui/react";
-
 import { Heart } from "@/components/icons/heart";
+import Navbar from "@/components/navbar";
+import { Button } from "@base-ui/react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Link from "next/link";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
-
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -29,12 +18,12 @@ function SideMenu() {
     <div className="pb-12 w-1/5">
       <div className="space-y-4 py-4">
         <div className="px-3 py-4">
-          <h2 className="mb-2 px-8 text-2xl font-bold tracking-tight">
+          <h2 className="mb-4 pl-2 text-2xl font-bold tracking-tight">
             Manage
           </h2>
           <div className="flex flex-col gap-2">
             <Link href="/gallery">
-              <Button className="w-full justify-start flex gap-2 hover:bg-gray-600 rounded-lg px-1 py-2">
+              <Button className="w-full flex justify-start gap-2 hover:bg-white hover:text-black rounded-lg px-1 py-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -52,25 +41,8 @@ function SideMenu() {
                 Gallery
               </Button>
             </Link>
-            {/* <Button className="w-full justify-start flex gap-2 hover:bg-gray-600 rounded-lg px-1 py-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-6 h-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z"
-                />
-              </svg>
-              Albums
-            </Button> */}
             <Link href="/favorites">
-              <Button className="w-full justify-start flex gap-2 hover:bg-gray-600 rounded-lg px-1 py-2">
+              <Button className="w-full justify-start flex gap-2 hover:bg-white hover:text-black rounded-lg px-1 py-2">
                 <Heart />
                 Favorites
               </Button>
@@ -88,29 +60,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className="dark"
-      // className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
+    <html lang="en">
       <body className={inter.className}>
-        <div className="border-b">
-          <div className="flex h-16 items-center px-12 py-6">
-            <Link href="/">PHOTO APP</Link>
-            <div className="ml-auto flex items-center space-x-4">
-              <Avatar>
-                <AvatarImage
-                  src="https://github.com/shadcn.png"
-                  alt="@shadcn"
-                />
-                <AvatarFallback>CN</AvatarFallback>
-              </Avatar>
-            </div>
+        <div className="flex items-center h-24">
+          <div className="flex h-16 items-center">
+            <Navbar />
           </div>
         </div>
         <div className="flex">
           <SideMenu />
-          <div className="w-5/6 px-2 p4-8">{children}</div>
+          <div className="w-5/6 px-32 py-8">{children}</div>
         </div>
       </body>
     </html>

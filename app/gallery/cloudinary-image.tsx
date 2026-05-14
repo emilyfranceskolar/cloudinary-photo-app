@@ -1,15 +1,23 @@
 "use client";
 import { Heart } from "@/components/icons/heart";
 import { SolidHeart } from "@/components/icons/solid-heart";
+import { DeleteButton } from "@/components/ui/delete-button";
 import { CldImage } from "next-cloudinary";
+import type { ComponentProps } from "react";
 import { useState } from "react";
 import { SetAsFavoriteAction } from "./actions";
 import { SearchResult } from "./page";
 
+type CloudinaryImageProps = Omit<ComponentProps<typeof CldImage>, "src"> & {
+  imageData: SearchResult;
+  onUnHeart?: (resource: SearchResult) => void;
+};
+
 export function CloudinaryImage({
   imageData,
+  onUnHeart,
   ...rest
-}: any & { imageData: SearchResult }) {
+}: CloudinaryImageProps) {
   const [isFavorited, setIsFavorited] = useState(
     imageData.tags.includes("favorite"),
   );
@@ -26,6 +34,9 @@ export function CloudinaryImage({
 
     try {
       await SetAsFavoriteAction(imageData.public_id, nextValue);
+      if (!nextValue) {
+        onUnHeart?.(imageData);
+      }
     } catch {
       setIsFavorited(previousValue);
     } finally {
@@ -34,7 +45,10 @@ export function CloudinaryImage({
   }
 
   return (
-    <div className="relative">
+    <section className="relative">
+      <div className="absolute top-2 left-2">
+        <DeleteButton />
+      </div>
       <CldImage {...rest} src={imageData.public_id} />
       {isFavorited ? (
         <SolidHeart
@@ -47,6 +61,6 @@ export function CloudinaryImage({
           className="absolute top-2 right-2 hover:text-red-700 cursor-pointer"
         />
       )}
-    </div>
+    </section>
   );
 }

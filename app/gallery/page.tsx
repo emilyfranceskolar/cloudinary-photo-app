@@ -1,6 +1,5 @@
 import cloudinary from "cloudinary";
 import { CloudinaryImage } from "./cloudinary-image";
-import UploadButton from "./upload-button";
 
 export type SearchResult = {
   public_id: string;
@@ -29,17 +28,17 @@ export default async function GalleryPage() {
 
   return (
     <section>
-      <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-2 ">
         <div className="flex justify-between items-center p-8">
           <h1 className="text-4xl font-bold">Gallery</h1>
-          <UploadButton />
         </div>
         {cloudinaryError ? (
           <p className="px-8 text-red-600">{cloudinaryError}</p>
         ) : null}
-        <div className="grid grid-cols-4 gap-4 p-8">
+        <div className="grid grid-cols-4 gap-4 p-8 relative">
           {resources.map((result) => (
             <CloudinaryImage
+              className=""
               key={result.public_id}
               imageData={result}
               width="400"
