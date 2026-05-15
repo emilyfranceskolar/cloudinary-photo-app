@@ -13,7 +13,7 @@ export default function Home() {
         className="object-cover"
       />
       <div className="flex justify-center p-8">
-        <h1 className="absolute text-4xl font-bold">Upload now</h1>
+        <h1 className="absolute text-4xl font-bold">Upload photos now!</h1>
       </div>
     </main>
   );

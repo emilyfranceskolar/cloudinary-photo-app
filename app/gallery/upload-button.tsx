@@ -1,7 +1,6 @@
 "use client";
 import { CldUploadButton } from "next-cloudinary";
 import { useRouter } from "next/navigation";
-import { UploadResult } from "../page";
 
 export default function UploadButton() {
   const router = useRouter();
@@ -9,7 +8,7 @@ export default function UploadButton() {
   return (
     <div className="flex gap-2 items-center px-4 py-2 hover:bg-white hover:text-black hover:rounded round-lg">
       <CldUploadButton
-        onSuccess={(result: UploadResult) => {
+        onSuccess={() => {
           // setImageId(result.info.public_id);
           setTimeout(() => {
             router.refresh();

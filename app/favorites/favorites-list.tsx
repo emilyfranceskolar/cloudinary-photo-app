@@ -16,7 +16,7 @@ export default function FavoritesList({
   if (resources.length === 0) {
     return (
       <div className="flex justify-start p-8">
-        <p>No favorites yet</p>
+        <p>No favorites yet! Like a photo in the gallery to see them here.</p>
       </div>
     );
   }
