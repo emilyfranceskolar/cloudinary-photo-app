@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 import { CloudinaryImage } from "../gallery/cloudinary-image";
 import { SearchResult } from "../gallery/page";
