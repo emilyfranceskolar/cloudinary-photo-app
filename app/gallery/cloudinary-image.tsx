@@ -1,7 +1,6 @@
 "use client";
 import { Heart } from "@/components/icons/heart";
 import { SolidHeart } from "@/components/icons/solid-heart";
-import { DeleteButton } from "@/components/ui/delete-button";
 import { CldImage } from "next-cloudinary";
 import type { ComponentProps } from "react";
 import { useState } from "react";
@@ -58,9 +57,9 @@ export function CloudinaryImage({
           className="absolute top-2 right-2 hover:text-red-600 cursor-pointer"
         />
       )}
-      <div className="absolute top-2 left-2 cursor-pointer">
+      {/* <div className="absolute top-2 left-2 cursor-pointer">
         <DeleteButton />
-      </div>
+      </div> */}
     </section>
   );
 }

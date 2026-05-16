@@ -12,6 +12,7 @@ export default function FavoritesList({
     "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-8 auto-rows-fr";
 
   const [resources, setResources] = useState(initialResources);
+
   if (resources.length === 0) {
     return (
       <div className="flex justify-start p-8">
