@@ -9,7 +9,7 @@ vi.mock("../gallery/cloudinary-image", () => ({
 
 import FavoritesList from "./favorites-list";
 
-test("shows empty message when there are no favorites", async () => {
+test("should show empty message when there are no favorites", async () => {
   const { getByText } = await render(<FavoritesList initialResources={[]} />);
 
   await expect
