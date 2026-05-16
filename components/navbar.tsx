@@ -73,7 +73,7 @@ export default function Navbar() {
           </div>
         </div>
       </nav>
-      <div className="fixed right-16 bottom-24 z-30 w-72">
+      <div className="fixed right-16 bottom-16 z-30 w-72">
         {uploadStatus === "success" && <AlertSuccess />}
         {uploadStatus === "fail" && <AlertFail />}
       </div>
